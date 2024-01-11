@@ -1,0 +1,36 @@
+#DEFAULT_VOLATILE
+#ENABLE_STACK_CHECKING
+#ENABLE_TRACE
+#symbol_name "prism 8x8 volume module"
+                     
+integer_parameter controller_id#;
+
+analog_input _skip_, vol_in#;
+string_output _skip_, cmd_out$;
+
+string_input DSP_RX$[1000];
+analog_output vol_fb#;
+
+change vol_in#
+{
+	if(controller_id# < 10)
+ 		cmd_out$ = "CS 0000" + itoa(controller_id#) + " " + itoa(vol_in#) + "\x0D";
+	else
+		cmd_out$ = "CS 000" + itoa(controller_id#) + " " + itoa(vol_in#) + "\x0D";
+}
+                                        
+change DSP_RX$
+{
+    integer newVolPos, newVolInt;
+	string newVolString[10];
+
+	string matchString[10];
+	matchString = "#" + itoa(controller_id#);
+
+ 	if(find(matchString, DSP_RX$) > 0)
+	{
+        newVolPos = find("%", DSP_RX$) - 8;
+		newVolString = mid(DSP_RX$, newVolPos, 3);
+		vol_fb# = atoi(newVolString);
+	}
+}

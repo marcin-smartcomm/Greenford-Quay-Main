@@ -1,0 +1,25 @@
+#DEFAULT_VOLATILE
+#ENABLE_STACK_CHECKING
+#ENABLE_TRACE
+#symbol_name "HVAC Temp translator"
+                                      
+string_parameter processor[10], Room[10];
+
+analog_input _skip_, _skip_, actual_Temp#, desired_Temp#;
+string_output _skip_, _skip_, actual_Temp$, desired_Temp$;
+
+change actual_Temp#
+{
+	string newTemp$[10];
+	newTemp$ = itoa(actual_Temp#);
+
+ 	actual_Temp$ = "HVAC:"+processor+":"+Room+":ActualTemp:"+left(newTemp$, 2)+"."+right(newTemp$, 1);
+}
+
+change desired_Temp#
+{                    
+	string newTemp$[10];
+	newTemp$ = itoa(desired_Temp#);
+                   
+ 	desired_Temp$ = "HVAC:"+processor+":"+Room+":DesiredTemp:"+left(newTemp$, 2)+"."+right(newTemp$, 1);
+}

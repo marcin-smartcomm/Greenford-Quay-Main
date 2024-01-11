@@ -1,0 +1,121 @@
+.source-text-container
+{
+    width: 90%;
+    height: 10%;
+}
+
+.function-btns
+{
+    width: 90%;
+    height: 10%;
+}
+
+.source-controls-container
+{
+    width: 35%;
+    height: 60%;
+}
+
+.btn-row
+{
+  width: 100%;
+  height: 25%;
+}
+
+.btn-red
+{
+    background-color: red;
+}
+
+.btn-green
+{
+    background-color: rgb(0, 255, 0);
+}
+
+.btn-yellow
+{
+    background-color: yellow;
+}
+
+.btn-blue
+{
+    background-color: blue;
+}
+
+.btn-round
+{
+    margin-left: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.btn-card-function
+{
+    height: 90%;
+    width: 20%;
+    border: 1px solid var(--main-color);
+}
+
+.ch-btn-container
+{
+    width: 5%;
+    height: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ch-btn
+{
+    border: 1px solid var(--main-color);
+    width: 100%;
+    height: 49%;
+    margin-right: 25px;
+}
+
+#returnBtn
+{
+    border: 0;
+}
+
+.main-num-container
+{
+    width: 100%;
+    height: 300px;
+}
+
+.num-container
+{
+    width: 80%;
+    height: 100%;
+}
+
+.num-btn-placeholder
+{
+    width: 64px;
+    height: 60px;
+}
+
+.spacer1
+{
+    width: 10%;
+}
+
+.main-directional-btns-container
+{
+    width: 25%;
+}
+
+.directional-btns-container
+{
+    width: 100%;
+    height: 300px;
+}
+
+.sub-directional-btns-container
+{
+    width: 80%;
+    height: 100%;
+}

@@ -1,0 +1,65 @@
+.expand
+{
+    overflow: scroll;
+    animation: expandBtn 0.5s forwards;
+}
+
+.shrink
+{
+    animation: shrinkBtn 0.5s forwards;
+}
+
+.btn-card-rectangular-special
+{
+    height: 45%;
+    width: 40%;
+    margin-top: 5px;
+    margin-left: 5px;
+    font-size: 28px;
+    border: 1px solid var(--main-color);
+}
+
+.btn-card-wide-special
+{
+    height: 45%;
+    width: 80%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 28px;
+    border: 1px solid var(--main-color);
+}
+
+.home-enter-anim
+{
+    animation: homeEnterAnim 1s forwards;
+}
+
+.arrow-right-room-change
+{
+    min-height: 100%;
+    min-width: 50px;
+    margin-left: 10px;
+}
+
+.arrow-left-room-change
+{
+    margin-right: 10px;
+}
+
+@keyframes expandBtn
+{
+    from {height: 10%;}
+    to {height: 40%;}
+}
+
+@keyframes shrinkBtn
+{
+    from {height: 40%;}
+    to {height: 10%;}
+}
+
+@keyframes homeEnterAnim
+{
+    from {background-color: var(--main-color);}
+    to {background-color: white;}
+}

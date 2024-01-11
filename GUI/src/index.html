@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- 
+    rootSettings.css and PowerOff.css are different for every panel type
+    all others use 770.css classes for iPad
+  -->
+
+  <!-- CHANGE FOR 570 AND 770 -->
+  <link rel="stylesheet" href="css/genericClasses-770.css">
+  <link rel="stylesheet" href="css/style-770.css">
+  <link rel="stylesheet" href="css/sky-770.css">
+
+  <!-- CHANGE FOR IPAD, 570 AND 770 CLASSES -->
+  <link rel="stylesheet" href="css/rootSettings-iPad.css">
+  <link rel="stylesheet" href="css/PowerOff-iPad.css">
+  
+  <link rel="stylesheet" href="css/Home.css">
+  <link rel="stylesheet" href="css/AreaSelect.css">
+  <link rel="stylesheet" href="components/vol-slider/vol-slider.css">
+  <link rel="stylesheet" href="components/vol-btns/vol-btns.css">
+  <link rel="stylesheet" href="components/room-select-btn/room-select-btn.css">
+  <link href="./fontawesome/free/css/fontawesome.css" rel="stylesheet">
+  <link href="./fontawesome/free/css/brands.css" rel="stylesheet">
+  <link href="./fontawesome/free/css/solid.css" rel="stylesheet">
+  <title>Home-Page</title>
+  <meta meta name="viewport" content=
+            "width=device-width, user-scalable=no" />
+</head>
+
+<body>
+  <header class="project-top" id="projectTop">
+
+    <div id="logoImgContainer">
+      <img src="./img/GreystarLogo.jpg" alt="" id="topCornerLogo">
+    </div>
+
+    <div id= "roomNameContainer" class="room-name-container">
+      Connecting Please Wait...
+    </div>
+
+    <div id="TODContainer" class="TOD-container">
+      10:33 Monday<br>16-11-2022
+    </div>
+
+  </header>
+
+  <section class="project-body centered wrapped" id="subpageSection">
+
+  </section>
+
+  <footer class="project-bottom" id="projectBottom">
+
+    <div class="spaced" id="volControlsContainer">
+    
+    </div>
+
+    <div style="margin-left: auto;" class="btn">
+      <div class="fa-solid fa-power-off fa-5x" id="pwrBtn"></div>
+    </div>
+
+  </footer>
+
+  <script src="./jquery/dist/jquery.js"></script>
+  <script src="./app.js"></script>
+  <script src="./AjaxCalls.js"></script>
+  <script src="./SubpageManager.js"></script>
+  <script src="./pages/Home.js"></script>
+  <script src="./pages/Sky.js"></script>
+  <script src="./pages/Freeview.js"></script>
+  <script src="./pages/ScreenSaver.js"></script>
+  <script src="./pages/AreaSelect.js"></script>
+  <script src="./popups/PowerOff.js"></script>
+</body>
+</html>

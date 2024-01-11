@@ -1,0 +1,25 @@
+{
+  "roomID": 3,
+  "floor": 0,
+  "roomName": "Meeting Room 1",
+  "menuItems": [
+    {
+      "menuItemName": "Local HDMI",
+      "menuItemPageAssigned": "",
+      "volControlType": "Btns",
+      "tvRequired": true,
+      "tvHDMIRequired": 1
+    },
+    {
+      "menuItemName": "Wireless Presentation",
+      "menuItemPageAssigned": "",
+      "volControlType": "Btns",
+      "tvRequired": true,
+      "tvHDMIRequired": 2
+    }
+  ],
+  "sourceSelected": "Local HDMI",
+  "volLevel": 0,
+  "volMute": false,
+  "tvCardRequired": false
+}

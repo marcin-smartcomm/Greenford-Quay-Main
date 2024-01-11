@@ -1,0 +1,163 @@
+.centered
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapped
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.spaced
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.btn
+{
+    font-size: 20px;
+    color: var(--main-color);
+    background-color: white;
+}
+
+.btn:active
+{
+    color: white;
+    background-color: var(--main-color);
+}
+
+.active-btn
+{
+    color: white;
+    animation: activeBtnAnim 1s forwards;
+}
+
+.shadow-big
+{
+    box-shadow: 10px 10px rgba(var(--main-color-R), var(--main-color-G), var(--main-color-B), 0.5);
+}
+
+.shadow-small
+{
+    box-shadow: 5px 5px rgba(var(--main-color-R), var(--main-color-G), var(--main-color-B), 0.5);
+}
+
+.btn-card-wide
+{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 80%;
+    height: 20%;
+    text-align: center;
+    font-size: 32px;
+}
+
+.btn-card-rectangular
+{
+    width: 40px;
+    height: 40px;
+    margin-top: 5px;
+    border: 1px solid var(--main-color);
+}
+
+.btn-card-rectangular-big
+{
+    width: 60px;
+    height: 60px;
+    border: 1px solid var(--main-color);
+}
+
+.btn-card-rectangular-big-x2
+{
+    width: 35%;
+    height: 20%;
+    margin: auto;
+    font-size: 150%;
+}
+
+.info-card
+{
+    background-color: white;
+}
+
+.info-card-size
+{
+    width: 80%;
+    height: 40%;
+}
+
+.info-text
+{
+    font-size: 24px;
+    text-align: center;
+    width: 100%;
+}
+
+.custom-info-text
+{
+    font-size: 28px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 3vh;
+}
+
+.info-text-big
+{
+    font-size: 36px;
+    text-align: center;
+    width: 100%;
+}
+
+.slider
+{
+    -webkit-appearance: none;
+    background-color: white;
+    height: 40px;
+    overflow: hidden;
+    width: 300px;
+    border: 1px solid white;
+    margin-left: 20px;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: black;
+    box-shadow: -210px 0 0 200px var(--main-color);
+    height: 40px;
+    width: 40px;
+    border: 0;
+}
+
+.fa-volume-xmark, .fa-volume-high
+{
+    animation: muteAnim 1s forwards;
+}
+
+@keyframes activeBtnAnim
+{
+    from
+    {
+        background-color: white
+    } 
+    to
+    {
+        background-color: var(--main-color)
+    }
+}
+
+@keyframes muteAnim
+{
+    from
+    {
+        color: white
+    } 
+    to
+    {
+        color: var(--main-color)
+    }
+}

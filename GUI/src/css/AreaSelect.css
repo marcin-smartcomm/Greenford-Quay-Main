@@ -1,0 +1,27 @@
+.floor-btns-container
+{
+    height: 30%;
+    width: 90%;
+}
+
+.room-btns-container
+{
+    flex-wrap: wrap;
+    height: 70%;
+    width: 90%;
+}
+
+.flr-btn-area-select
+{
+    height: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+}
+
+.btn-area-select
+{
+    height: 15%;
+    margin: 0px 2%;
+    width: 25%;
+}

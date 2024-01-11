@@ -1,0 +1,32 @@
+#DEFAULT_VOLATILE
+#ENABLE_STACK_CHECKING
+#ENABLE_TRACE
+#symbol_name "Sonos Comms"
+
+string_parameter PlayerName[20];
+
+string_input _skip_, Rx$[100], _skip_;
+analog_input _skip_, volLevel_Fb#;                       
+
+string_output _skip_, Tx$, _skip_, PlayerName$;                       
+analog_output volLevel#;
+
+change Rx$
+{
+	if(left(Rx$, 6) = PlayerName)
+	{
+	 	if(mid(Rx$, 8, 6) = "Volume")
+		{
+	     	volLevel# = atoi(mid(Rx$, 15, 3));
+		}
+		if(mid(Rx$, 8, 4) = "Name")
+		{
+	     	PlayerName$ = mid(Rx$, 13, 20);
+		}
+	}
+}
+
+change volLevel_Fb#
+{
+	Tx$ = PlayerName + ":Volume:" + itoa(volLevel_Fb#);	 	
+}

@@ -1,0 +1,26 @@
+{
+  "name": "minimilist-ch5",
+  "version": "1.0.0",
+  "description": "Barclays Display Project",
+  "main": "index.js",
+  "scripts": {
+    "webserver": "./node_modules/.bin/ws --directory src --port 8888 --static.maxage 1",
+    "build:archive": "ch5-cli archive -p WSCH5P -d src -o .",
+    "build:deploy": "ch5-cli deploy -H 192.168.1.176 -p -t touchscreen WSCH5P.ch5z",
+    "build:deployPhone": "ch5-cli deploy -H 192.168.1.182 -t touchscreen WSCH5P.ch5z",
+    "officeBuild:deploy": "ch5-cli deploy -H 10.10.100.250 -t touchscreen WSCH5P.ch5z"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "NONE",
+  "devDependencies": {
+    "local-web-server": "^4.2.1"
+  },
+  "dependencies": {
+    "@angular-slider/ngx-slider": "^2.0.3",
+    "@crestron/ch5-crcomlib": "^1.2.0",
+    "@crestron/ch5-utilities": "^0.1.52",
+    "@crestron/ch5-utilities-cli": "^0.1.52",
+    "webrtc": "^1.14.1"
+  }
+}
