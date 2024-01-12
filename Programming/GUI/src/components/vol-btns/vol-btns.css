@@ -1,11 +1,28 @@
 #volDown
 {
-  height: 80%;
-  width: 23%;
+  height: 70px;
+  width: 130px;
 }
 
 #volUp
 {
-  height: 80%;
-  width: 23%;
+  height: 70px;
+  width: 130px;
+}
+
+.vol-controls-container
+{
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: 75%;
+  height: 100%;
+  align-items: center;
+}
+
+.volume-label
+{
+    font-size: 25px;
+    color: white;
+    margin: 10px 40px;
 }

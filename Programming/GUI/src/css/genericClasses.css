@@ -1,3 +1,13 @@
+@font-face {
+    font-family: "AvenirLTStd-Book";
+    src: url("../fonts/avenir_ff/AvenirLTStd-Book.otf");
+}
+
+*
+{
+    font-family: "AvenirLTStd-Book";
+}
+
 .centered
 {
     display: flex;
@@ -52,7 +62,7 @@
     margin-top: 15px;
     margin-bottom: 15px;
     width: 80%;
-    height: 20%;
+    height: 100px;
     text-align: center;
     font-size: 32px;
 }
@@ -136,6 +146,26 @@
 .fa-volume-xmark, .fa-volume-high
 {
     animation: muteAnim 1s forwards;
+}
+
+.main-card-entry-animation
+{
+    animation: mainCardAppear 0.5s forwards;
+}
+
+.vol-controls-fly-in
+{
+    animation: volControlsFlyIn 0.5s forwards;
+}
+
+@keyframes volControlsFlyIn {
+    from { left: -500px; }
+    to { left: -0px; }
+}
+
+@keyframes mainCardAppear {
+    from { height: 0%; }
+    to { height: 95%; }
 }
 
 @keyframes activeBtnAnim

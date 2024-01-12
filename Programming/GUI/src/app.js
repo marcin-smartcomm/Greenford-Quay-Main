@@ -72,6 +72,16 @@ function UpdateVolumeControls()
              }
         });
     }
+
+    VolumeControlsAnimation()
+}
+
+function VolumeControlsAnimation()
+{
+    $('.vol-controls-container').addClass('vol-controls-fly-in')
+    setTimeout(() => {
+        $('.vol-controls-container').removeClass('vol-controls-fly-in')
+    }, 500);
 }
 
 function DrawSliderVolControl()

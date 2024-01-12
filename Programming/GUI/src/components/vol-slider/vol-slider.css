@@ -3,3 +3,11 @@
   height: 100%;
   width: 23%;
 }
+
+#volLabel
+{
+    font-size: 30px;
+    width: 10%;
+    margin: 0px 100px 0 10px;
+    color: white;
+}

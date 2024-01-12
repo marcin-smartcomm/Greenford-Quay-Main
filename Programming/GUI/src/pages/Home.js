@@ -5,6 +5,8 @@ function InitializeHomeVariables()
     DrawAVCard()
     if(roomCoreData.tvCardRequired) DrawTVCard()
     UpdateSelectedSource()
+
+    CardsIntroAnimation()
 }
 
 function DrawAVCard()
@@ -97,4 +99,19 @@ function ActivateTVBtns()
         console.log("Down");
         AjaxGETCall("VolDownBtnPress", [roomCoreData.roomID])
     })
+}
+
+function CardsIntroAnimation()
+{
+    let mainCards = $('.main-card')
+
+    $.each(mainCards, function (i, mainCard) { 
+       $(mainCard).addClass('main-card-entry-animation')
+    });
+
+    setTimeout(() => {
+        $.each(mainCards, function (i, mainCard) { 
+           $(mainCard).removeClass('main-card-entry-animation')
+        });
+    }, 500);
 }

@@ -6,6 +6,13 @@
     height: 600px;
     background-color: rgba(0, 0, 0, 0.7);
     position: absolute;
+
+    animation: powerOffBlackOutScreen 0.5s forwards;
+}
+
+@keyframes powerOffBlackOutScreen {
+    from { background-color: rgba(0, 0, 0, 0); }
+    to { background-color: rgba(0, 0, 0, 0.7); }
 }
 
 .power-off-message-container
@@ -16,6 +23,14 @@
     height: 80%;
     background-color: var(--main-color);
     position: inherit;
+    text-align: center;
+
+    animation: powerOffMessageStretchOut 0.5s forwards;
+}
+
+@keyframes powerOffMessageStretchOut {
+    from { width: 50%; }
+    to { width: 80% }
 }
 
 .message-container
