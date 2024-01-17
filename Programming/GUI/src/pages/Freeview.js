@@ -1,6 +1,6 @@
 function InitializeFreeviewVariables()
 {
-    document.getElementById("returnBtn").addEventListener('click', function() {
+    $('#returnBtn').on('click', () => {
         openSubpage("Home")
     })
 
@@ -11,16 +11,8 @@ function InitializeFreeviewVariables()
         {
             document.getElementById(`srcBtn:${i}`).addEventListener('touchend', function()
             {
-                sendMessage(`srcBtn:${i}:Freeview`)
+                AjaxGETCall("FreeviewCtrl", [roomCoreData.roomID, i])
             })
         }
     }
-    document.getElementById(`volUpBtn`).addEventListener('touchend', function()
-    {
-        sendMessage(`VolumeUp`)
-    })
-    document.getElementById(`volDownBtn`).addEventListener('touchend', function()
-    {
-        sendMessage(`VolumeDown`)
-    })
 }

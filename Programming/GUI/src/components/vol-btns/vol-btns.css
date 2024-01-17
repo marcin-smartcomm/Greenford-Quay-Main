@@ -22,7 +22,8 @@
 
 .volume-label
 {
-    font-size: 25px;
-    color: white;
-    margin: 10px 40px;
+  text-align: center;
+  font-size: 25px;
+  color: white;
+  margin: 10px 40px;
 }

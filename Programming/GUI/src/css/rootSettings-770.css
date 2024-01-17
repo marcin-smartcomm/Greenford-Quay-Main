@@ -46,3 +46,17 @@ body
     width: 100%;
     height: 100px;
 }
+
+.room-name-container
+{
+    text-align: center;
+    min-width: 600px;
+    max-width: 600px;
+}
+
+.TOD-container
+{
+    text-align: center;
+    min-width: 300px;
+    max-width: 300px;
+}

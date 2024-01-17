@@ -198,6 +198,17 @@ namespace Greenford_Quay_Main
 
                 #endregion
 
+                #region Freeview Control
+
+                else if (incomingRequest.Contains("/FreeviewCtrl"))
+                {
+                    string roomID = incomingRequest.Split('?')[1].Split(':')[0];
+                    string btnPressed = incomingRequest.Split('?')[1].Split(':')[1];
+
+                    ControlSystem.FreeviewBtnPress(roomID, int.Parse(btnPressed));
+                }
+
+                #endregion
 
                 else if (incomingRequest.Contains("/FireAlarmState"))
                 {

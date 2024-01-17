@@ -13,7 +13,7 @@
     {
       "menuItemName": "Music Player 2",
       "menuItemPageAssigned": "",
-      "volControlType": "Btns",
+      "volControlType": "Slider",
       "tvRequired": false,
       "tvHDMIRequired": 0
     },
@@ -30,6 +30,13 @@
       "volControlType": "Slider",
       "tvRequired": false,
       "tvHDMIRequired": 0
+    },
+    {
+      "menuItemName": "Freeview",
+      "menuItemPageAssigned": "Freeview",
+      "volControlType": "Btns",
+      "tvRequired": true,
+      "tvHDMIRequired": 9
     }
   ],
   "sourceSelected": "Off",

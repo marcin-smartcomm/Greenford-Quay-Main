@@ -51,6 +51,9 @@ function ActivateSrcBtns()
             responseJSON = AjaxGETCall("ChangeSouceSelected", [roomCoreData.roomID, srcID])
             roomCoreData.sourceSelected = responseJSON.currentSource
             UpdateSelectedSource()
+
+            if(roomCoreData.menuItems[srcID].menuItemPageAssigned != "")
+                openSubpage(roomCoreData.menuItems[srcID].menuItemPageAssigned)
         });
     });
 }
