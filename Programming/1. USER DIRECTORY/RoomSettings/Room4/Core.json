@@ -2,6 +2,8 @@
   "roomID": 4,
   "floor": 0,
   "roomName": "Meeting Room 2",
+  "leftNeighbour": -1,
+  "rightNeighbour": -1,
   "menuItems": [
     {
       "menuItemName": "Local HDMI",

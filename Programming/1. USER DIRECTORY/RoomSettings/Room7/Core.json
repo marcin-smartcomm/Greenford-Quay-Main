@@ -1,0 +1,62 @@
+{
+  "roomID": 7,
+  "floor": 14,
+  "roomName": "Media Room",
+  "leftNeighbour": -1,
+  "rightNeighbour": -1,
+  "menuItems": [
+    {
+      "menuItemName": "Music Player 1",
+      "menuItemPageAssigned": "",
+      "volControlType": "Slider",
+      "tvRequired": false,
+      "tvHDMIRequired": 0
+    },
+    {
+      "menuItemName": "Music Player 2",
+      "menuItemPageAssigned": "",
+      "volControlType": "Slider",
+      "tvRequired": false,
+      "tvHDMIRequired": 0
+    },
+    {
+      "menuItemName": "Music Player 3",
+      "menuItemPageAssigned": "",
+      "volControlType": "Slider",
+      "tvRequired": false,
+      "tvHDMIRequired": 0
+    },
+    {
+      "menuItemName": "Music Player 4",
+      "menuItemPageAssigned": "",
+      "volControlType": "Slider",
+      "tvRequired": false,
+      "tvHDMIRequired": 0
+    },
+    {
+      "menuItemName": "Sky",
+      "menuItemPageAssigned": "Sky",
+      "volControlType": "Slider",
+      "tvRequired": true,
+      "tvHDMIRequired": 1
+    },
+    {
+      "menuItemName": "Apple TV",
+      "menuItemPageAssigned": "",
+      "volControlType": "Slider",
+      "tvRequired": true,
+      "tvHDMIRequired": 2
+    },
+    {
+      "menuItemName": "Wireless Presentation",
+      "menuItemPageAssigned": "",
+      "volControlType": "Slider",
+      "tvRequired": true,
+      "tvHDMIRequired": 3
+    }
+  ],
+  "sourceSelected": "Off",
+  "volLevel": 0,
+  "volMute": false,
+  "tvCardRequired": false
+}

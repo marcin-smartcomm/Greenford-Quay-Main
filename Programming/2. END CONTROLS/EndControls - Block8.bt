@@ -1,0 +1,105 @@
+[LG_BOOT_DATA]
+BinFileName=EndControls - Block8.bin
+SMWFileName=EndControls - Block8.smw
+NumberSymbols=1445
+NumberSignals=12613
+RouteFileName=EndControls - Block8.rte
+CUZ=1.007.0017
+RackType=CP4N
+SymParamVersion=21.007.0017
+NumberParameters=1336
+NumRealIntegralParams=474
+NumRealStringParams=862
+NVRAMUsed=0
+SplusNVRAMUsed=0
+CompileDateTime=1/30/2024 7:21 PM
+EventSchedBitMask=28443
+NumberDigitalSigs=6748
+NumberAnalogSigs=1997
+NumberSerialSigs=3868
+CompilerVersion=3.03
+SourceEnvironmentVersion=SIMPL Windows v4.2500.04
+SymbolLibraryVersion=1193
+IOLibraryVersion=1193
+CmcvtbinCfgVersion=22
+InputSigFileVersion=4
+OutputSigFileVersion=1
+ParamFileVersion=75
+CresDBVersion=220.00.001.00
+DeviceDBVersion=200.285.001.00
+IllegalJamStatus=0
+AccurateSigCounts=True
+IncludeDatVersion=2.19.069
+HighestNodeType=3
+NumActiveNodes=2
+NodeType1=1
+HighestIDAtNodeType1=10
+NodeType2=3
+HighestIDAtNodeType2=176
+NumConsoleSyms=0
+NumTmsgSyms=0
+LogosSPlusExists=True
+NumDevicesToRegister=16
+FriendlyName=Main
+IsProdigy=FALSE
+NumProgramsSupported=10
+ProductID=1
+DevelopmentToolID=1
+CloudInfo=EndControls - Block8.cloud
+
+[LG_SLAVE_INFO]
+LogosNumSlaveEntries=0
+
+[LG_MANIFEST_INFO]
+NumFilesInManifest=29
+ManifestEntry1=EndControls - Block8.dip
+ManifestEntry2=EndControls - Block8.bin
+ManifestEntry3=EndControls - Block8.rte
+ManifestEntry4=EndControls - Block8.cdm
+ManifestEntry5=BGM_Comms.dll
+ManifestEntry6=prism_8x8_volume_module.dll
+ManifestEntry7=CrestronCertifiedDriversVideoDisplayModule_v2_0.dll
+ManifestEntry8=RADDisplay.dll
+ManifestEntry9=Crestron.DeviceDrivers.API.dll
+ManifestEntry10=Crestron.DeviceDrivers.Core.dll
+ManifestEntry11=Crestron.DeviceDrivers.NonSandboxed.dll
+ManifestEntry12=Crestron.DeviceDrivers.SDK.dll
+ManifestEntry13=CrestronCertifiedDriverResourcesLibrary.dll
+ManifestEntry14=RADCommon.dll
+ManifestEntry15=RADSystemManager.dll
+ManifestEntry16=EndControls - Block8.dsc
+ManifestEntry17=EndControls - Block8.spp
+ManifestEntry18=SplusManagerApp.exe
+ManifestEntry19=SplusLibrary.dll
+ManifestEntry20=SplusObjects.dll
+ManifestEntry21=SimplSharpHelperInterface.dll
+ManifestEntry22=SimplSharpCustomAttributesInterface.dll
+ManifestEntry23=SimplSharpData.dat
+ManifestEntry24=SimplSharpData.dat.der
+ManifestEntry25=Newtonsoft.Json.Compact.dll
+ManifestEntry26=SimplSharpCryptographyInterface.dll
+ManifestEntry27=SimplSharpReflectionInterface.dll
+ManifestEntry28=EndControls - Block8.cloud
+ManifestEntry29=boot.bt
+
+[LG_SPLUS_INFO]
+SPlusWriteParamsToBinFile=TRUE
+SPlusWriteParamsToExternalFile=TRUE
+SPlusParametersFile=EndControls - Block8.spp
+LogosNumSplusFiles=11
+LogosSplusFilename1=BGM_Comms.dll
+LogosSplusFilename2=prism_8x8_volume_module.dll
+LogosSplusFilename3=CrestronCertifiedDriversVideoDisplayModule_v2_0.dll
+LogosSplusFilename4=RADDisplay.dll
+LogosSplusFilename5=Crestron.DeviceDrivers.API.dll
+LogosSplusFilename6=Crestron.DeviceDrivers.Core.dll
+LogosSplusFilename7=Crestron.DeviceDrivers.NonSandboxed.dll
+LogosSplusFilename8=Crestron.DeviceDrivers.SDK.dll
+LogosSplusFilename9=CrestronCertifiedDriverResourcesLibrary.dll
+LogosSplusFilename10=RADCommon.dll
+LogosSplusFilename11=RADSystemManager.dll
+
+[SNIPPET_INFO]
+NumSnippets=2
+SnippetInfo1=Symlib2.Tio 1193
+SnippetInfo2=Symlib2.Tio 1193

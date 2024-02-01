@@ -4177,6 +4177,7 @@ namespace Crestron.RAD.Common.Helpers;
         // class declarations
          class AudioToneHelper;
          class CommonFeatureSupportHelper;
+         class CriticalSectionDelegateWrapperBase;
          class CriticalSectionEventWrapper;
          class DropdownDescriptionHelper;
          class OsHelper;
@@ -4222,6 +4223,22 @@ namespace Crestron.RAD.Common.Helpers;
 
         // class functions
         static STRING_FUNCTION GetDescription ( CommonFeatureSupport supportEnum );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class CriticalSectionDelegateWrapperBase 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
         SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
         STRING_FUNCTION ToString ();
 
@@ -6194,7 +6211,8 @@ namespace Crestron.RAD.Common;
         Crestron.RAD.Common.VideoConfigurationData videoConfigurations;
         Crestron.RAD.Common.DatFileAudioVideoSwitcher audioVideoSwitcher;
         Crestron.RAD.Common.ExtensionDeviceData extensionDeviceData;
-        Crestron.RAD.Common.DeveloperInformation developer;
+        STRING developer[];
+        Crestron.RAD.Common.DeveloperInformation developerContact;
         STRING dependencyGroup[];
 
         // class properties
@@ -8147,14 +8165,16 @@ namespace RADCommon.Devices.SecuritySystem;
         delegate FUNCTION DriverLoadedDelegate ( INTEGER loaded , INTEGER port , INTEGER rebootRequired );
         delegate FUNCTION DriverAuthenticationSupportsDelegate ( INTEGER supportsUsername , INTEGER supportsPassword , INTEGER isRequired );
         delegate FUNCTION DriverAuthenticationUpdateDelegate ( INTEGER authStatus );
+        delegate FUNCTION DriverCustomCommandDelegate ( );
         delegate FUNCTION LogDelegate ( SIMPLSHARPSTRING logMessage );
         delegate FUNCTION CustomIrCommandSupportsDelegate ( );
-        delegate FUNCTION DriverCustomCommandDelegate ( );
         delegate FUNCTION DriverCloudStatusDelegate ( INTEGER registrationStatus , SIMPLSHARPSTRING registrationError );
 
         // class events
 
         // class functions
+        SIGNED_LONG_INTEGER_FUNCTION SimplGetAreaCount ();
+        SIGNED_LONG_INTEGER_FUNCTION SimplGetNumLeds ();
         SIGNED_LONG_INTEGER_FUNCTION SimplGetNumFunctionButtons ();
         SIMPLSHARPSTRING_FUNCTION SimplGetAreaName ( INTEGER areaIndex );
         SIGNED_LONG_INTEGER_FUNCTION IsAreaDisarmed ( INTEGER areaIndex );
@@ -8190,8 +8210,6 @@ namespace RADCommon.Devices.SecuritySystem;
         FUNCTION Initialize4 ( STRING filename , SIGNED_LONG_INTEGER id , STRING ipAddress , SIGNED_LONG_INTEGER port , SIGNED_LONG_INTEGER enableLogging , SIGNED_LONG_INTEGER ethernetAdapterType , SIGNED_LONG_INTEGER useDefaultDirectory );
         FUNCTION RegisterMainModule ( STRING mainModuleId );
         FUNCTION SimplOverridePassword ( STRING password );
-        SIGNED_LONG_INTEGER_FUNCTION SimplGetAreaCount ();
-        SIGNED_LONG_INTEGER_FUNCTION SimplGetNumLeds ();
         STRING_FUNCTION SimplSetComportSpec ( INTEGER comPort );
         FUNCTION ReceiveData ( STRING message );
         FUNCTION SimplEnableLogging ();
@@ -8267,6 +8285,7 @@ namespace RADCommon.Devices.SecuritySystem;
         DelegateProperty DriverLoadedDelegate DriverLoadedCallback;
         DelegateProperty DriverAuthenticationSupportsDelegate DriverAuthenticationSupportsCallback;
         DelegateProperty DriverAuthenticationUpdateDelegate DriverAuthenticationUpdateCallback;
+        DelegateProperty DriverCustomCommandDelegate DriverCustomCommandCallback;
         DelegateProperty TxUpdatedDelegate InternalTxUpdated;
         DelegateProperty PacketTxUpdatedDelegate InternalPacketTxUpdated;
         DelegateProperty LogDelegate InternalLogOut;
@@ -8986,6 +9005,200 @@ namespace Crestron.RAD.DeviceTypes.Gateway;
 
         // class properties
         CrestronSerialDeviceApi CrestronSerialDeviceApi;
+    };
+
+namespace Crestron.RAD.DeviceTypes.CustomConferencing;
+        // class declarations
+         class SimplCustomConferencing;
+         class SimplCustomConferencingWidget;
+     class SimplCustomConferencing 
+    {
+        // class delegates
+        delegate FUNCTION IntegerUpdatedDelegate ( INTEGER value );
+        delegate FUNCTION BasicConnectionSupportsDelegate ( INTEGER disconnect , INTEGER reconnect );
+        delegate FUNCTION BasicInformationDelegate ( SIMPLSHARPSTRING sdkVersion , SIMPLSHARPSTRING manufacturer , SIMPLSHARPSTRING baseModel , SIMPLSHARPSTRING supportedModels , SIMPLSHARPSTRING supportedSeries , SIMPLSHARPSTRING description , SIMPLSHARPSTRING driverVersion , SIMPLSHARPSTRING driverVersionDate , SIMPLSHARPSTRING guid , INTEGER supportsFeedback );
+        delegate FUNCTION DriverAuthenticationSupportsDelegate ( INTEGER supportsUserName , INTEGER supportsPassword , INTEGER isRequired );
+        delegate FUNCTION DriverAuthenticationUpdateDelegate ( INTEGER authStatus );
+        delegate FUNCTION DriverLoadedDelegate ( INTEGER loaded , INTEGER port , INTEGER rebootRequired );
+        delegate FUNCTION StringUpdatedDelegate ( SIMPLSHARPSTRING value );
+        delegate FUNCTION LogDelegate ( SIMPLSHARPSTRING logMessage );
+        delegate FUNCTION PacketTxUpdatedDelegate ( SIMPLSHARPSTRING message );
+        delegate FUNCTION TxUpdatedDelegate ( SIMPLSHARPSTRING message );
+        delegate FUNCTION RxOutDelegate ( SIMPLSHARPSTRING message );
+        delegate FUNCTION CustomIrCommandSupportsDelegate ( );
+        delegate FUNCTION DriverCustomCommandDelegate ( );
+        delegate FUNCTION DriverCloudStatusDelegate ( INTEGER registrationStatus , SIMPLSHARPSTRING registrationError );
+
+        // class events
+
+        // class functions
+        FUNCTION SimplAddExternalSource ( SIMPLSHARPSTRING id , SIMPLSHARPSTRING name , SIMPLSHARPSTRING connector , SIMPLSHARPSTRING icon , INTEGER isAvailable );
+        FUNCTION SimplEndCall ();
+        SIMPLSHARPSTRING_FUNCTION SimplGetAvailableConnectorID ( INTEGER sourceIndex );
+        SIMPLSHARPSTRING_FUNCTION SimplGetAvailableConnectorName ( INTEGER sourceIndex );
+        SIMPLSHARPSTRING_FUNCTION SimplGetAvailableIconID ( INTEGER sourceIndex );
+        SIMPLSHARPSTRING_FUNCTION SimplGetAvailableIconName ( INTEGER sourceIndex );
+        SIMPLSHARPSTRING_FUNCTION SimplGetContentSource ( INTEGER sourceIndex );
+        SIMPLSHARPSTRING_FUNCTION SimplGetExternalSourceConnector ( INTEGER sourceIndex );
+        SIMPLSHARPSTRING_FUNCTION SimplGetExternalSourceIcon ( INTEGER sourceIndex );
+        SIMPLSHARPSTRING_FUNCTION SimplGetExternalSourceID ( INTEGER sourceIndex );
+        SIMPLSHARPSTRING_FUNCTION SimplGetExternalSourceName ( INTEGER sourceIndex );
+        SIMPLSHARPSTRING_FUNCTION SimplGetSupportedUIDefinitionFormat ( INTEGER sourceIndex );
+        FUNCTION SimplGetWidgetStates ();
+        FUNCTION SimplInitialize ( STRING filename , STRING ipAddress , INTEGER port , INTEGER enableLogging , INTEGER useDefaultDirectory );
+        FUNCTION SimplMicMuteOff ();
+        FUNCTION SimplMicMuteOn ();
+        FUNCTION SimplMicMuteToggle ();
+        FUNCTION SimplNotifyExternalSourceRouted ( INTEGER sourceIndex );
+        FUNCTION SimplOpenUIPanel ( SIMPLSHARPSTRING panelId , SIMPLSHARPSTRING pageId );
+        FUNCTION SimplOverridePassword ( STRING password );
+        FUNCTION SimplOverrideUsername ( STRING username );
+        FUNCTION SimplRemoveAllExternalSources ();
+        FUNCTION SimplRemoveExternalSource ( INTEGER sourceIndex );
+        FUNCTION SimplRemoveUIDefinition ( SIMPLSHARPSTRING id );
+        FUNCTION SimplSelectShare ( INTEGER sourceIndex , INTEGER share );
+        FUNCTION SimplSetExternalSourceIsAvailable ( INTEGER sourceIndex , INTEGER available );
+        FUNCTION SimplShareRemoteContent ();
+        FUNCTION SimplUploadUIDefinition ( SIMPLSHARPSTRING simplFilename , SIMPLSHARPSTRING simplId );
+        FUNCTION RegisterParentModule ( STRING parentModuleId );
+        FUNCTION SetWidgetConfiguration ( STRING item , STRING value );
+        FUNCTION Initialize ( STRING filename , SIGNED_LONG_INTEGER id , STRING ipAddress , SIGNED_LONG_INTEGER port );
+        STRING_FUNCTION SimplSetComportSpec ( INTEGER comPort );
+        FUNCTION ReceiveData ( STRING message );
+        FUNCTION SimplEnableLogging ();
+        FUNCTION SimplDisableLogging ();
+        FUNCTION SimplEnableTxDebug ();
+        FUNCTION SimplDisableTxDebug ();
+        FUNCTION SimplEnableRxDebug ();
+        FUNCTION SimplDisableRxDebug ();
+        FUNCTION SimplDisconnect ();
+        FUNCTION SimplReconnect ();
+        FUNCTION SimplConnect ();
+        FUNCTION SimplEnableRxOut ();
+        FUNCTION SimplDisableRxOut ();
+        FUNCTION SimplSendCustomCommand ( STRING message );
+        FUNCTION SimplSendCustomCommandByName ( STRING commandName );
+        FUNCTION SimplSendCustomCommandByValue ( STRING value );
+        FUNCTION SimplTriggerCustomCommand ( STRING commandName );
+        FUNCTION SimplTriggerCustomCommandPress ( STRING commandName );
+        FUNCTION SimplTriggerCustomCommandRelease ( STRING commandName );
+        INTEGER_FUNCTION SimplCustomCommandExists ( STRING commandName );
+        FUNCTION SimplCustomCommandPageUp ();
+        FUNCTION SimplCustomCommandPageDown ();
+        FUNCTION SetDriverCustomCommands ();
+        FUNCTION UpdateCustomCommands ( SIMPLSHARPSTRING labels[] , INTEGER curPage );
+        FUNCTION SimplSetStringUserAttribute ( INTEGER index , STRING value );
+        FUNCTION SimplSetAnalogUserAttribute ( INTEGER index , INTEGER value );
+        FUNCTION SimplSetDigitalUserAttribute ( INTEGER index , INTEGER value );
+        FUNCTION SimplRegisterWithCloud ( SIMPLSHARPSTRING uniqueId );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER UserAttributeIsAvailable[];
+        INTEGER UserAttributeDataTypes[];
+        INTEGER UserAttributeTypes[];
+        STRING UserAttributeLabels[][];
+        INTEGER UserAttributeIsPersistent[];
+        INTEGER UserAttributeRequiredForConnection[];
+        STRING UserAttributeDescriptions[][];
+        SIMPLSHARPSTRING SimplCustomCommandNames[][];
+        INTEGER SimplNumPages;
+        INTEGER SimplNumCustomCommands;
+        INTEGER SimplCurrentPage;
+
+        // class properties
+        DelegateProperty IntegerUpdatedDelegate AvailableConnectorsChangedUpdate;
+        DelegateProperty IntegerUpdatedDelegate AvailableContentSourcesChangedUpdate;
+        DelegateProperty IntegerUpdatedDelegate AvailableIconsChangedUpdate;
+        DelegateProperty BasicConnectionSupportsDelegate BasicConnectionSupportsUpdate;
+        DelegateProperty BasicInformationDelegate BasicInformationUpdate;
+        DelegateProperty IntegerUpdatedDelegate ConnectionStateUpdate;
+        DelegateProperty DriverAuthenticationSupportsDelegate DriverAuthenticationSupportsUpdate;
+        DelegateProperty DriverAuthenticationUpdateDelegate DriverAuthenticationUpdate;
+        DelegateProperty DriverLoadedDelegate DriverLoadedUpdate;
+        DelegateProperty StringUpdatedDelegate ExternalSourceRoutedUpdate;
+        DelegateProperty IntegerUpdatedDelegate IsCallActiveUpdate;
+        DelegateProperty IntegerUpdatedDelegate IsMicMutedUpdate;
+        DelegateProperty IntegerUpdatedDelegate IsSharingContentUpdate;
+        DelegateProperty LogDelegate LogOutUpdate;
+        DelegateProperty IntegerUpdatedDelegate MaxSharedSourcesUpdate;
+        DelegateProperty PacketTxUpdatedDelegate PacketTxUpdate;
+        DelegateProperty PacketTxUpdatedDelegate PacketTxUpdated;
+        DelegateProperty IntegerUpdatedDelegate SourcesChangedUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_AddRemoveExternalSourceUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_AvailableConnectorsUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_AvailableContentSourcesUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_AvailableIconsUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_EndCallUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_GetWidgetStatesUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_IDUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_IsCallActiveUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_IsMicMutedUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_IsSharingContentUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_MicMuteOnOffUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_MicMuteToggleUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_OpenUIPanelUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_RemoveAllExternalSourcesUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_RemoveUIDefinitionUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_SetStatusUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_SetWidgetStatesUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_ShareRemoteContentUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_SupportedUIDefinitionsFormatsUpdate;
+        DelegateProperty IntegerUpdatedDelegate Supports_UploadUIDefinitionUpdate;
+        DelegateProperty TxUpdatedDelegate TxUpdate;
+        DelegateProperty TxUpdatedDelegate TxUpdated;
+        DelegateProperty TxUpdatedDelegate InternalTxUpdated;
+        DelegateProperty PacketTxUpdatedDelegate InternalPacketTxUpdated;
+        DelegateProperty LogDelegate InternalLogOut;
+        DelegateProperty RxOutDelegate InternalRxOut;
+        DelegateProperty BasicConnectionSupportsDelegate InternalBasicConnectionSupportsUpdated;
+        DelegateProperty CustomIrCommandSupportsDelegate InternalCustomIrCommandSupportsUpdatead;
+        DelegateProperty DriverLoadedDelegate InternalDriverLoadedCallback;
+        DelegateProperty DriverAuthenticationSupportsDelegate InternalDriverAuthenticationSupportsCallback;
+        DelegateProperty DriverAuthenticationUpdateDelegate InternalDriverAuthenticationUpdateCallback;
+        DelegateProperty DriverCustomCommandDelegate InternalDriverCustomCommandCallback;
+        DelegateProperty DriverCloudStatusDelegate InternalDriverCloudStatusCallback;
+        STRING ApplicationDirectory[];
+        STRING InterfaceName[];
+    };
+
+     class SimplCustomConferencingWidget 
+    {
+        // class delegates
+        delegate FUNCTION IntegerIntegerUpdatedDelegate ( INTEGER value1 , INTEGER value2 );
+        delegate FUNCTION PulseDelegate ( );
+        delegate FUNCTION IntegerUpdatedDelegate ( INTEGER value );
+        delegate FUNCTION ModuleRegistrationUpdated ( INTEGER registered );
+
+        // class events
+
+        // class functions
+        FUNCTION RegisterPortModule ( STRING parentModuleId , STRING widgetId , STRING widgetType );
+        FUNCTION SetWidgetConfiguration ( STRING item , STRING value );
+        FUNCTION SimplUpdateButtonIsSelected ( SIMPLSHARPSTRING buttonValue );
+        FUNCTION SimplUpdateIsOff ();
+        FUNCTION SimplUpdateIsOn ();
+        FUNCTION SimplUpdateIsPressed ( INTEGER isPressed );
+        FUNCTION SimplUpdateTextToSend ( SIMPLSHARPSTRING text );
+        FUNCTION SimplUpdateValueIs ( SIGNED_INTEGER value );
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+        DelegateProperty IntegerIntegerUpdatedDelegate ArrowUpdate;
+        DelegateProperty IntegerIntegerUpdatedDelegate ButtonSelectedUpdate;
+        DelegateProperty PulseDelegate ClickedUpdate;
+        DelegateProperty IntegerUpdatedDelegate DecrementUpdate;
+        DelegateProperty IntegerUpdatedDelegate IncrementUpdate;
+        DelegateProperty ModuleRegistrationUpdated ModuleRegistrationUpdate;
+        DelegateProperty IntegerUpdatedDelegate OnOffStateUpdate;
+        DelegateProperty IntegerUpdatedDelegate PressedUpdate;
+        DelegateProperty IntegerUpdatedDelegate ValueUpdate;
+        DelegateProperty IntegerUpdatedDelegate WidgetDefinedUpdate;
     };
 
 namespace Crestron.RAD.DeviceTypes.AudioVideoSwitcher;

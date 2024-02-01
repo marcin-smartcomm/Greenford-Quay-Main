@@ -2,6 +2,8 @@
   "roomID": 1,
   "floor": 0,
   "roomName": "Lounge / Concierge",
+  "leftNeighbour": -1,
+  "rightNeighbour": -1,
   "menuItems": [
     {
       "menuItemName": "Music Player 1",

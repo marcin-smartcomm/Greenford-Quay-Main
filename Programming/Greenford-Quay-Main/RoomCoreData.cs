@@ -16,6 +16,8 @@ namespace Greenford_Quay_Main
         public int roomID { get; set; }
         public int floor { get; set; }
         public string roomName { get; set; }
+        public int leftNeighbour { get; set; }
+        public int rightNeighbour { get; set; }
         public List<RoomMenuItem> menuItems { get; set; }
         public string sourceSelected { get; set; }
         public int volLevel { get; set; }

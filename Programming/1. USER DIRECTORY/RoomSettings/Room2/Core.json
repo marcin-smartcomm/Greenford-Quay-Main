@@ -2,6 +2,8 @@
   "roomID": 2,
   "floor": 0,
   "roomName": "Leasing Office",
+  "leftNeighbour": -1,
+  "rightNeighbour": -1,
   "menuItems": [
     {
       "menuItemName": "Music Player 1",

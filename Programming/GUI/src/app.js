@@ -41,11 +41,9 @@ function LoadCoreData()
         panelType = data.panelType
         roomCoreData = AjaxGETCall('RoomData', [999])
 
-        if(panelType == "TSW") $('#roomNameContainer').text(roomCoreData.roomName)
-
+        FillRoomName()
         if(panelType == "iPad") 
         {
-            $('#roomNameContainer').html(roomCoreData.roomName)
             $.get("components/room-select-btn/room-select-btn.html", (data) => { $('#roomNameContainer').append(data) });
             $('#areaSelectBtn').on('click', () => {
                 openSubpage("AreaSelect")
@@ -56,6 +54,44 @@ function LoadCoreData()
     }).fail(function(){
         console.log("An error has occurred.");
     });
+}
+
+function FillRoomName()
+{
+    let leftArrow, rightArrow;
+    $.get("components/room-select-left-arrow/room-select-left-arrow.html", (data) => { leftArrow = data });
+    $.get("components/room-select-right-arrow/room-select-right-arrow.html", (data) => { rightArrow = data });
+
+    if(roomCoreData.leftNeighbour != -1 && roomCoreData.rightNeighbour != -1)
+        $('#roomNameContainer').html(`${leftArrow} ${roomCoreData.roomName} ${rightArrow}`)
+
+    else if (roomCoreData.leftNeighbour != -1 && roomCoreData.rightNeighbour == -1)
+        $('#roomNameContainer').html(`${leftArrow} ${roomCoreData.roomName} <i id="arrow-place-holder"></i>`)
+
+    else if (roomCoreData.leftNeighbour == -1 && roomCoreData.rightNeighbour != -1)
+        $('#roomNameContainer').html(`<i id="arrow-place-holder"></i> ${roomCoreData.roomName} ${rightArrow}`)
+
+    else if (roomCoreData.leftNeighbour == -1 && roomCoreData.rightNeighbour == -1)
+        $('#roomNameContainer').html(`${roomCoreData.roomName}`)
+
+    ActivateRoomChangeArrows()
+}
+
+function ActivateRoomChangeArrows()
+{
+    let rightArrow = $('#rightArrowRoomSelect')
+    if(rightArrow.length > 0) 
+        rightArrow.on("touchend", () => {
+            responseJSON = AjaxGETCall("ChangeZone", [roomCoreData.rightNeighbour])
+            location.reload()
+        })
+
+    let leftArrow = $('#leftArrowRoomSelect')
+    if(leftArrow.length > 0) 
+        leftArrow.on("touchend", () => {
+            responseJSON = AjaxGETCall("ChangeZone", [roomCoreData.leftNeighbour])
+            location.reload()
+        })
 }
 
 function UpdateVolumeControls()

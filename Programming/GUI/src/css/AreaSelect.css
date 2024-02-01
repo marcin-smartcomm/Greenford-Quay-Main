@@ -1,19 +1,20 @@
 .floor-btns-container
 {
-    height: 30%;
+    height: 15%;
     width: 90%;
 }
 
 .room-btns-container
 {
+    overflow: scroll;
     flex-wrap: wrap;
-    height: 70%;
-    width: 90%;
+    height: 85%;
+    width: 100%;
 }
 
 .flr-btn-area-select
 {
-    height: 40%;
+    height: 80%;
     margin-left: auto;
     margin-right: auto;
     width: 30%;
@@ -22,6 +23,16 @@
 .btn-area-select
 {
     height: 100px;
-    margin: 0px 2%;
+    margin: 0px 10px;
     width: 300px;
+}
+
+#rightArrowRoomSelect, #leftArrowRoomSelect
+{
+    width: 60px;
+}
+#arrow-place-holder
+{
+    width: 60px;
+    display: inline-block;
 }

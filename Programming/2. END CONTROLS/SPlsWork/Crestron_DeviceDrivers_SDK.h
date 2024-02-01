@@ -1363,6 +1363,7 @@ namespace Crestron.DeviceDrivers.SDK.Util;
          class ReflectionFunc;
          class ConsoleWrapper;
          class CriticalSection;
+         class DelegateWrapperBase;
          class DriverDataStore;
          class EventWrapper;
          class FileSystem;
@@ -1581,8 +1582,24 @@ namespace Crestron.DeviceDrivers.SDK.Util;
         // class events
 
         // class functions
-        FUNCTION Dispose ();
+        FUNCTION DisposeLock ();
         FUNCTION Leave ();
+        SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
+        STRING_FUNCTION ToString ();
+
+        // class variables
+        INTEGER __class_id__;
+
+        // class properties
+    };
+
+     class DelegateWrapperBase 
+    {
+        // class delegates
+
+        // class events
+
+        // class functions
         SIGNED_LONG_INTEGER_FUNCTION GetHashCode ();
         STRING_FUNCTION ToString ();
 
@@ -3901,6 +3918,7 @@ namespace Crestron.DeviceDrivers.SDK.Transformations.Hash;
     static class HashType // enum
     {
         static SIGNED_LONG_INTEGER Sha256;
+        static SIGNED_LONG_INTEGER Md5;
     };
 
 namespace Crestron.DeviceDrivers.SDK.Transformations.Encode;
