@@ -7,6 +7,7 @@ using Crestron.SimplSharpPro.DeviceSupport;
 using Crestron.SimplSharpPro.UI;
 using Newtonsoft.Json;
 using Crestron.SimplSharpPro.GeneralIO;
+using Crestron.SimplSharp.CrestronIO;
 
 namespace Greenford_Quay_Main
 {
@@ -38,7 +39,7 @@ namespace Greenford_Quay_Main
                     cs.ConsoleLoggerStart(55555);
 
                     sse = new SSE_Server();
-                    WebServer ws = new WebServer(sse);
+                    WebServer ws = new WebServer(sse, this);
 
                     string googleApiKey = "AIzaSyBeDkV6Zpr9irQuXS1Ig7dDfdIFGVTiG0U";
                     InitializeCalendars(googleApiKey);
@@ -54,6 +55,18 @@ namespace Greenford_Quay_Main
                     iPad = new CrestronOne(0x03, this);
                     iPad.ParameterProjectName.Value = "Greenford-Quay-Block8-iPad-GUI";
                     iPad.Register();
+                }
+
+                if (this.SupportsIROut)
+                {
+                    string SkyHDIRPath = string.Format("{0}/user/SkyHD.ir", Directory.GetDirectoryRoot(Directory.GetApplicationDirectory()));
+
+                    ControllerIROutputSlot.Register();
+
+                    try { IROutputPorts[1].LoadIRDriver(SkyHDIRPath); } catch (Exception ex) { ConsoleLogger.WriteLine($"Problem loading Sky HD IR: {ex.Message}"); }
+                    try { IROutputPorts[2].LoadIRDriver(SkyHDIRPath); } catch (Exception ex) { ConsoleLogger.WriteLine($"Problem loading Sky HD IR: {ex.Message}"); }
+
+                    ConsoleLogger.WriteLine("IR Drivers Loading Complete");
                 }
             }
             catch (Exception e)
@@ -332,6 +345,13 @@ namespace Greenford_Quay_Main
             }
             SendMessageToSIMPL("Room" + roomID + "TV1KP:" + key);
         }
+        public void SkyBtnPress(string btnName, int roomID)
+        {
+            uint skyPortAssigned = JsonConvert.DeserializeObject<RoomCoreData>(FileOperations.loadRoomJson(roomID, "Core")).skyIRPort;
+
+            try { IROutputPorts[skyPortAssigned].PressAndRelease(btnName, 25); }
+            catch (Exception ex) { ConsoleLogger.WriteLine($"Problem in SkyHDBtnPress - skyPortAssigned: {skyPortAssigned} btnName: {btnName}\n" + ex); }
+        }
 
         void _ControllerEthernetEventHandler(EthernetEventArgs ethernetEventArgs)
         {
@@ -364,7 +384,6 @@ namespace Greenford_Quay_Main
             }
 
         }
-
         void _ControllerSystemEventHandler(eSystemEventType systemEventType)
         {
             switch (systemEventType)

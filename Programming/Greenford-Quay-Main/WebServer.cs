@@ -10,12 +10,14 @@ namespace Greenford_Quay_Main
 {
     class WebServer
     {
+        ControlSystem _cs;
         SSE_Server _eventServer;
 
-        public WebServer(SSE_Server eventServer)
+        public WebServer(SSE_Server eventServer, ControlSystem cs)
         {
             try
             {
+                _cs = cs;
                 _eventServer = eventServer;
                 ListenAsync();
             }
@@ -206,7 +208,7 @@ namespace Greenford_Quay_Main
 
                 #endregion
 
-                #region Freeview Control
+                #region Source Control
 
                 else if (incomingRequest.Contains("/FreeviewCtrl"))
                 {
@@ -214,6 +216,16 @@ namespace Greenford_Quay_Main
                     string btnPressed = incomingRequest.Split('?')[1].Split(':')[1];
 
                     ControlSystem.FreeviewBtnPress(roomID, int.Parse(btnPressed));
+                }
+
+                else if (incomingRequest.Contains("/SkyCtrl"))
+                {
+                    string roomID = incomingRequest.Split('?')[1].Split(':')[0];
+                    string btnName = incomingRequest.Split('?')[1].Split(':')[1];
+
+                    _cs.SkyBtnPress(btnName, int.Parse(roomID));
+
+                    response = "{ \"CommandProcessed\": \"true\" }";
                 }
 
                 #endregion

@@ -23,5 +23,6 @@ namespace Greenford_Quay_Main
         public int volLevel { get; set; }
         public bool volMute { get; set; }
         public bool tvCardRequired { get; set; }
+        public uint skyIRPort { get; set; }
     }
 }

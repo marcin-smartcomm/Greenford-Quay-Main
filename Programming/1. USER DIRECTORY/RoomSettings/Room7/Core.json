@@ -58,5 +58,6 @@
   "sourceSelected": "Off",
   "volLevel": 0,
   "volMute": false,
-  "tvCardRequired": false
+  "tvCardRequired": false,
+  "skyIRPort": 1
 }
