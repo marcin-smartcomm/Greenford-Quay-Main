@@ -81,14 +81,14 @@ function ActivateRoomChangeArrows()
 {
     let rightArrow = $('#rightArrowRoomSelect')
     if(rightArrow.length > 0) 
-        rightArrow.on("touchend", () => {
+        rightArrow.on("touchstart", () => {
             responseJSON = AjaxGETCall("ChangeZone", [roomCoreData.rightNeighbour])
             location.reload()
         })
 
     let leftArrow = $('#leftArrowRoomSelect')
     if(leftArrow.length > 0) 
-        leftArrow.on("touchend", () => {
+        leftArrow.on("touchstart", () => {
             responseJSON = AjaxGETCall("ChangeZone", [roomCoreData.leftNeighbour])
             location.reload()
         })

@@ -29,7 +29,9 @@
 
 #rightArrowRoomSelect, #leftArrowRoomSelect
 {
-    width: 60px;
+    display: inline-block;
+    width: 100px;
+    height: 40px;
 }
 #arrow-place-holder
 {
