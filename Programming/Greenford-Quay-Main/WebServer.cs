@@ -215,7 +215,7 @@ namespace Greenford_Quay_Main
                     string roomID = incomingRequest.Split('?')[1].Split(':')[0];
                     string btnPressed = incomingRequest.Split('?')[1].Split(':')[1];
 
-                    ControlSystem.FreeviewBtnPress(roomID, int.Parse(btnPressed));
+                    ControlSystem.FreeviewBtnPress(roomID, btnPressed);
                 }
 
                 else if (incomingRequest.Contains("/SkyCtrl"))
