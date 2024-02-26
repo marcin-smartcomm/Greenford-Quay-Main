@@ -141,8 +141,15 @@ namespace Greenford_Quay_Main
                 {
                     string roomID = incomingRequest.Split('?')[1].Split(':')[0];
                     string newLevel = incomingRequest.Split('?')[1].Split(':')[1];
-
-                    ControlSystem.SendMessageToSIMPL($"BGM:Room0{roomID}:Volume:{newLevel}");
+                    if (int.Parse(roomID) < 10)
+                    {
+                        ControlSystem.SendMessageToSIMPL($"BGM:Room0{roomID}:Volume:{newLevel}");
+                    }
+                    else
+                    {
+                        ControlSystem.SendMessageToSIMPL($"BGM:Room{roomID}:Volume:{newLevel}");
+                    }
+                    
 
                     response = "{ \"CommandProcessed\": \"true\" }";
                 }

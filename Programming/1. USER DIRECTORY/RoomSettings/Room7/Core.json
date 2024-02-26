@@ -38,7 +38,7 @@
       "menuItemPageAssigned": "Sky",
       "volControlType": "Slider",
       "tvRequired": true,
-      "tvHDMIRequired": 1
+      "tvHDMIRequired": 3
     },
     {
       "menuItemName": "Apple TV",
@@ -52,7 +52,7 @@
       "menuItemPageAssigned": "",
       "volControlType": "Slider",
       "tvRequired": true,
-      "tvHDMIRequired": 3
+      "tvHDMIRequired": 1
     }
   ],
   "sourceSelected": "Off",

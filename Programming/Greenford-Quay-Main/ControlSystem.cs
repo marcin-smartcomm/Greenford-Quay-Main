@@ -98,14 +98,14 @@ namespace Greenford_Quay_Main
 
         void GamesRoomDoorControl(bool occupationState)
         {
-            _doorHoldingRelayInterface.RelayPorts[1].State = occupationState;
+            _doorHoldingRelayInterface.RelayPorts[1].State = !occupationState;
             this.RelayPorts[5].State = !occupationState;
         }
         void MediaRoomDoorControl(bool occupationState) => this.RelayPorts[6].State = !occupationState;
         void DiningDoorControl(bool occupationState)
         {
-            _doorHoldingRelayInterface.RelayPorts[2].State = occupationState;
-            _doorHoldingRelayInterface.RelayPorts[3].State = occupationState;
+            _doorHoldingRelayInterface.RelayPorts[2].State = !occupationState;
+            _doorHoldingRelayInterface.RelayPorts[3].State = !occupationState;
             this.RelayPorts[7].State = !occupationState;
         }
         void YogaDoorControl(bool occupationState) => this.RelayPorts[8].State = !occupationState;
