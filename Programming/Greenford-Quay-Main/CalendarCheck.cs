@@ -8,17 +8,14 @@ namespace Greenford_Quay_Main
 {
     public class CalendarCheck
     {
-        ControlSystem _cs;
-
         string _calendarName = string.Empty;
         string _apiKey = string.Empty;
         string _calendarId = string.Empty;
 
         public event Action<bool> inMeeting;
 
-        public CalendarCheck(ControlSystem cs, string calendarId, string apiKey, string calendarName)
+        public CalendarCheck(string calendarId, string apiKey, string calendarName)
         {
-            _cs = cs;
             _calendarId = calendarId;
             _apiKey = apiKey;
             _calendarName = calendarName;
@@ -34,7 +31,8 @@ namespace Greenford_Quay_Main
         {
             Task.Run(() =>
             {
-                GetResponse(_calendarId);
+                try { GetResponse(_calendarId); }
+                catch (Exception ex) { ConsoleLogger.WriteLine("Problem Fetching Calendar Info: " + ex); }
             });
         }
 
