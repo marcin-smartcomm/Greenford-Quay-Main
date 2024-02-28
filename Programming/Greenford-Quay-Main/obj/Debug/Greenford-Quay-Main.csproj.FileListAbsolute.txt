@@ -163,7 +163,6 @@ C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming
 C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\SimplSharpCWSHelperInterface.dll
 C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\SimplSharpExchangeWebServices.dll
 C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\SimplSharpHelperInterface.dll
-C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\SimplSharpNewtonsoft.dll
 C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\SimplSharpOnvifInterface.dll
 C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\SimplSharpPro.exe
 C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\SimplSharpProgrammingInterfaces.dll
@@ -194,7 +193,6 @@ C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming
 C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\SimplSharpCWSHelperInterface.xml
 C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\SimplSharpExchangeWebServices.xml
 C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\SimplSharpHelperInterface.xml
-C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\SimplSharpNewtonsoft.xml
 C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\SimplSharpOnvifInterface.xml
 C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\SimplSharpPro.xml
 C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\SimplSharpProgrammingInterfaces.xml
@@ -455,3 +453,19 @@ D:\OneDrive - SRW Electrical Ltd\SRW-Shared\Programming\Greenford\Crestron\Progr
 D:\OneDrive - SRW Electrical Ltd\SRW-Shared\Programming\Greenford\Crestron\Programming\Greenford-Quay-Main\obj\Debug\Greenford-Quay-Main.csproj.CopyComplete
 D:\OneDrive - SRW Electrical Ltd\SRW-Shared\Programming\Greenford\Crestron\Programming\Greenford-Quay-Main\obj\Debug\Greenford-Quay-Main.dll
 D:\OneDrive - SRW Electrical Ltd\SRW-Shared\Programming\Greenford\Crestron\Programming\Greenford-Quay-Main\obj\Debug\Greenford-Quay-Main.pdb
+C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\Google.Apis.Auth.dll
+C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\Google.Apis.Calendar.v3.dll
+C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\Google.Apis.Core.dll
+C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\Google.Apis.dll
+C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\System.CodeDom.dll
+C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\Google.Apis.pdb
+C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\Google.Apis.xml
+C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\Google.Apis.Auth.pdb
+C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\Google.Apis.Auth.xml
+C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\Google.Apis.Calendar.v3.pdb
+C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\Google.Apis.Calendar.v3.xml
+C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\Google.Apis.Core.pdb
+C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\Google.Apis.Core.xml
+C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Marcin.Rycyk\Desktop\Smartcomm\PROJECTS\Greenford-Quay-Main\Programming\Greenford-Quay-Main\bin\Debug\System.CodeDom.xml

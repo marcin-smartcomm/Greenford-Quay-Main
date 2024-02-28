@@ -38,20 +38,24 @@ namespace Greenford_Quay_Main
 
         async void GetResponse(string calendarId)
         {
-            DateTime today = DateTime.Today;
-            var service = new CalendarService(new BaseClientService.Initializer()
+            try
             {
-                ApiKey = _apiKey,
-                ApplicationName = "Api key example"
-            });
+                DateTime today = DateTime.Today;
+                var service = new CalendarService(new BaseClientService.Initializer()
+                {
+                    ApiKey = _apiKey,
+                    ApplicationName = "Api key example"
+                });
 
-            var request = service.Events.List(calendarId);
-            request.Fields = "items(summary,start,end)";
-            request.OrderBy = EventsResource.ListRequest.OrderByEnum.Updated;
-            request.UpdatedMinDateTimeOffset = today;
-            responseData = await request.ExecuteAsync();
+                var request = service.Events.List(calendarId);
+                request.Fields = "items(summary,start,end)";
+                request.OrderBy = EventsResource.ListRequest.OrderByEnum.Updated;
+                request.UpdatedMinDateTimeOffset = today;
+                responseData = await request.ExecuteAsync();
 
-            ProcessResponse(responseData);
+                ProcessResponse(responseData);
+            }
+            catch (Exception ex) { ConsoleLogger.WriteLine("Problem Fetching Calendar Info 2: " + ex); }
         }
 
         void ProcessResponse(Google.Apis.Calendar.v3.Data.Events response)
