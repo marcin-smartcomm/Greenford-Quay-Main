@@ -14,6 +14,11 @@ function AjaxGETCall(endpoint, params)
     return $.get(`http://${coreProcessorIP}:50000/api/${endpoint}?${dataToSend}`).responseJSON
 }
 
+function UnsubscribeFromCoreEvents()
+{
+    adminEventStreamSource.close();
+}
+
 function SubscribeToCoreEvents()
 {
     adminEventStreamSource = new EventSource(`http://${coreProcessorIP}:50001/api/events?${roomCoreData.roomID}`)

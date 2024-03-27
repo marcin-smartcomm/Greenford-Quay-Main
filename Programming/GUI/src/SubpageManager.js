@@ -4,8 +4,19 @@ let currentSubpage;
 let blankOutBtnsVis = false;
 var popupOpen = false;
 
+function UpdateTime()
+{
+    var date = new Date();
+    var n = date.toDateString();
+    var time = date.toLocaleTimeString();
+
+    document.getElementById("TODContainer").innerHTML = n + "\n" + time;
+}
+
 function openSubpage(file)
 {
+  if(file != "ScreenSaver") currentTimeInterval = window.setInterval(UpdateTime, 1000)
+
   document.getElementById("subpageSection").classList.add("transitionIn")
   
   if(currentSubpage != null)

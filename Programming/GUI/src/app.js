@@ -1,38 +1,42 @@
 let coreProcessorIP = ''
 let panelType = ''
 let roomCoreData = ''
-let interval;
+let currentTimeInterval;
+let loggedOut = true;
 
 window.onload = function(){
     $.ajaxSetup({async: false, timeout: 2000});
     LoadCoreData()
-    SubscribeToCoreEvents()
     ActivatePowerBtn()
     inactivityTime()
 
     if (panelType == "TSW") openSubpage("ScreenSaver")
     if (panelType == "iPad") openSubpage("AreaSelect")
-    interval = window.setInterval(UpdateTime, 1000)
 }
 
 let inactivityTime = function() {
     let time;
-    document.addEventListener('touchstart', () => { resetTimer(); })
-    function logout() { openSubpage("ScreenSaver"); }
+    document.addEventListener('touchstart', () => {
+        if(loggedOut)
+        {
+            LoadCoreData()
+            SubscribeToCoreEvents()
+            loggedOut = false;
+        }
+
+        resetTimer(); 
+    })
+    function logout() { 
+        loggedOut = true;
+        clearInterval(currentTimeInterval)
+        UnsubscribeFromCoreEvents()
+        openSubpage("ScreenSaver"); 
+    }
     function resetTimer() {
       clearTimeout(time);
       time = setTimeout(logout, 60000)
     }
 };
-
-function UpdateTime()
-{
-    var date = new Date();
-    var n = date.toDateString();
-    var time = date.toLocaleTimeString();
-
-    document.getElementById("TODContainer").innerHTML = n + "\n" + time;
-}
 
 function LoadCoreData()
 {
