@@ -1,0 +1,44 @@
+.lock-unlock-main-container
+{
+  width: 100%;
+  height: 100%;
+}
+
+.lock-unlock-top-container
+{
+  width: 100%;
+  height: 15%;
+}
+
+.lock-unlock-slots-container
+{
+  height: 85%;
+  overflow: scroll;
+}
+
+.lock-unluck-title
+{
+  width: 90%;
+  text-align: center;
+  font-size: 28px;
+}
+
+.lock-unlock-slot
+{
+  padding-top: 10px;
+  width: 80%;
+  font-size: 28px;
+  text-align: left;
+}
+
+.lock-unlock-slot-name
+{
+  width: 30%;
+}
+
+.lock-btn
+{
+  border: none;
+  font-size: 36px;
+  width: 20%;
+}

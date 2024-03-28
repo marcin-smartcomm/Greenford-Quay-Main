@@ -16,6 +16,7 @@ function AjaxGETCall(endpoint, params)
 
 function UnsubscribeFromCoreEvents()
 {
+    AjaxGETCall("Disconnect", [])
     adminEventStreamSource.close();
 }
 
@@ -48,5 +49,13 @@ function CoreProcessorProcessIncomingEvent(event)
         let newMuteState = event.data.split(':')[2];
         roomCoreData.volMute = newMuteState
         UpdateMuteState()
+    }
+    if(event.data.includes("Locked"))
+    {
+        if(panelType == "TSW") DisplayLockedMessage(true);
+    }
+    if(event.data.includes("Unlocked"))
+    {
+        if(panelType == "TSW") RefreshPanelData();
     }
 }

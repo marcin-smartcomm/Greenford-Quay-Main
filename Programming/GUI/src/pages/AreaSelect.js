@@ -5,6 +5,9 @@ function InitializeAreaSelectVariables()
     $('#homeBtn').on('click', () => {
         openSubpage("Home")
     })
+    $('#lockUnlockBtn').on('click', () => {
+        openSubpage("LockUnlock")
+    })
 }
 
 function UpdateAvailableZones(zoneNames)

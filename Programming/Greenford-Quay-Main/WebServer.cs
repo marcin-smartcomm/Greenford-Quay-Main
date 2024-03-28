@@ -119,7 +119,7 @@ namespace Greenford_Quay_Main
                         ControlSystem.SendMessageToSIMPL($"Room{roomID}TV1PON");
                         ControlSystem.SendMessageToSIMPL($"Room{roomID}TV1HDMI{selectedItem.tvHDMIRequired}");
                     }
-                    else ControlSystem.SendMessageToSIMPL($"Room{roomID}TV1POFF");
+                    //else ControlSystem.SendMessageToSIMPL($"Room{roomID}TV1POFF");
 
                     response = "{ \"currentSource\": \""+rcd.sourceSelected+"\" }";
                 }
@@ -237,6 +237,56 @@ namespace Greenford_Quay_Main
 
                 #endregion
 
+
+                else if (incomingRequest.Contains("/LockUnlockStates"))
+                {
+                    List<TPLockedReport> reports = new List<TPLockedReport>();
+                    foreach (string directory in FileOperations.GetRoomDirectories())
+                    {
+                        string roomRaw = directory.Split('/')[1];
+                        int roomID = int.Parse(roomRaw.Replace("Room", ""));
+
+                        RoomCoreData rcd = JsonConvert.DeserializeObject<RoomCoreData>(FileOperations.loadRoomJson(roomID, "Core"));
+                        reports.Add(new TPLockedReport() { roomID = rcd.roomID, tpLocked = rcd.tpLocked });
+                    }
+
+                    response = JsonConvert.SerializeObject(reports);
+                }
+
+                else if (incomingRequest.Contains("/LockTP"))
+                {
+                    string roomID = incomingRequest.Split('?')[1];
+
+                    RoomCoreData rcd = JsonConvert.DeserializeObject<RoomCoreData>(FileOperations.loadRoomJson(Int32.Parse(roomID), "Core"));
+
+                    rcd.tpLocked = true;
+                    if (rcd.leftNeighbour != -1) LockRoomTP(rcd.leftNeighbour, true);
+                    if (rcd.rightNeighbour != -1) LockRoomTP(rcd.rightNeighbour, true);
+
+                    FileOperations.saveRoomJson(roomID, "Core", JsonConvert.SerializeObject(rcd));
+
+                    _eventServer.UpdateAllConnected(int.Parse(roomID), "Locked");
+
+                    response = "{ \"success\": \"true\" }";
+                }
+
+                else if (incomingRequest.Contains("/UnlockTP"))
+                {
+                    string roomID = incomingRequest.Split('?')[1];
+
+                    RoomCoreData rcd = JsonConvert.DeserializeObject<RoomCoreData>(FileOperations.loadRoomJson(Int32.Parse(roomID), "Core"));
+
+                    rcd.tpLocked = false;
+                    if (rcd.leftNeighbour != -1) LockRoomTP(rcd.leftNeighbour, false);
+                    if (rcd.rightNeighbour != -1) LockRoomTP(rcd.rightNeighbour, false);
+
+                    FileOperations.saveRoomJson(roomID, "Core", JsonConvert.SerializeObject(rcd));
+
+                    _eventServer.UpdateAllConnected(int.Parse(roomID), "Unlocked");
+
+                    response = "{ \"success\": \"true\" }";
+                }
+
                 else if (incomingRequest.Contains("/FireAlarmState"))
                 {
 
@@ -286,6 +336,17 @@ namespace Greenford_Quay_Main
                     return ipToRoomData.RoomID[i];
 
             return 2;
+        }
+
+        void LockRoomTP(int roomID, bool state)
+        {
+            RoomCoreData rcd = JsonConvert.DeserializeObject<RoomCoreData>(FileOperations.loadRoomJson(roomID, "Core"));
+
+            rcd.tpLocked = state;
+
+            FileOperations.saveRoomJson(roomID.ToString(), "Core", JsonConvert.SerializeObject(rcd));
+
+            _eventServer.UpdateAllConnected(roomID, "Locked");
         }
     }
 }

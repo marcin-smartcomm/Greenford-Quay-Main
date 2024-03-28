@@ -15,8 +15,6 @@ function UpdateTime()
 
 function openSubpage(file)
 {
-  if(file != "ScreenSaver") currentTimeInterval = window.setInterval(UpdateTime, 1000)
-
   document.getElementById("subpageSection").classList.add("transitionIn")
   
   if(currentSubpage != null)
@@ -79,6 +77,32 @@ function TogglePopUp(file)
 
 }
 
+function DisplayLockedMessage(state)
+{    
+  if(state && document.getElementById('lockedSection') == null)
+  {
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", './popups/LockedPopup.html', false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+              var allText = rawFile.responseText;
+              var popup = document.createElement("div")
+              popup.setAttribute("id", "lockedSection")
+              popup.innerHTML = allText;
+              document.querySelector('#subpageSection').appendChild(popup);
+            }
+        }
+    }
+    rawFile.send(null);
+    rawFile.DONE;
+  }
+  else if (!state) document.querySelector('#lockedSection').remove();
+}
+
 function ClearTransition()
 {
   document.getElementById("subpageSection").classList.remove("transitionIn");
@@ -92,4 +116,5 @@ function InitializeSubpageVariables(pageToInitialize)
   if(pageToInitialize == "Sky") InitializeSkyVariables()
   if(pageToInitialize == "Freeview") InitializeFreeviewVariables()
   if(pageToInitialize == "AreaSelect") InitializeAreaSelectVariables()
+  if(pageToInitialize == "LockUnlock") InitializeLockUnlockVariables()
 }

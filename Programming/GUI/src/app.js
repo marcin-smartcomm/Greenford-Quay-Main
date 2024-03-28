@@ -10,18 +10,49 @@ window.onload = function(){
     ActivatePowerBtn()
     inactivityTime()
 
-    if (panelType == "TSW") openSubpage("ScreenSaver")
+    if (panelType == "TSW") 
+    {
+        if(roomCoreData.tpLocked) DisplayLockedMessage(true)
+        else openSubpage("ScreenSaver"); 
+    }
     if (panelType == "iPad") openSubpage("AreaSelect")
+}
+
+function RefreshPanelData()
+{
+    LoadCoreData()
+    if (panelType == "TSW") 
+    {
+        if(roomCoreData.tpLocked) DisplayLockedMessage(true)
+        else openSubpage("ScreenSaver"); 
+    }
 }
 
 let inactivityTime = function() {
     let time;
     document.addEventListener('touchstart', () => {
-        if(loggedOut)
+        if(panelType == "TSW")
         {
-            LoadCoreData()
-            SubscribeToCoreEvents()
-            loggedOut = false;
+            if(roomCoreData.tpLocked || loggedOut) 
+            {
+                RefreshPanelData();
+                if(loggedOut) 
+                {
+                    SubscribeToCoreEvents()
+                    currentTimeInterval = window.setInterval(UpdateTime, 1000)
+                }
+                loggedOut = false;
+            }
+        }
+        if(panelType == "iPad")
+        {        
+            if(loggedOut)
+            {
+                LoadCoreData()
+                SubscribeToCoreEvents()
+                currentTimeInterval = window.setInterval(UpdateTime, 1000)
+                loggedOut = false;
+            }
         }
 
         resetTimer(); 
@@ -30,7 +61,13 @@ let inactivityTime = function() {
         loggedOut = true;
         clearInterval(currentTimeInterval)
         UnsubscribeFromCoreEvents()
-        openSubpage("ScreenSaver"); 
+
+        if(panelType == "TSW")
+        {
+            if(roomCoreData.tpLocked) DisplayLockedMessage(true)
+            else openSubpage("ScreenSaver"); 
+        }
+        else openSubpage("ScreenSaver"); 
     }
     function resetTimer() {
       clearTimeout(time);
