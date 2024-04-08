@@ -3,6 +3,7 @@ using Google.Apis.Services;
 using System;
 using System.Timers;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Greenford_Quay_Main
 {
@@ -21,15 +22,18 @@ namespace Greenford_Quay_Main
             _calendarName = calendarName;
 
             var timer = new Timer();
-            timer.Interval = 5000;
+            timer.Interval = 65000;
             timer.Elapsed += Timer_Elapsed;
             timer.Start();
         }
 
+        Task _check;
         Google.Apis.Calendar.v3.Data.Events responseData = null;
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            Task.Run(() =>
+            if (_check != null) _check.Dispose();
+
+            _check = Task.Run(() =>
             {
                 try { GetResponse(_calendarId); }
                 catch (Exception ex) { ConsoleLogger.WriteLine("Problem Fetching Calendar Info: " + ex); }
@@ -54,6 +58,8 @@ namespace Greenford_Quay_Main
                 responseData = await request.ExecuteAsync();
 
                 ProcessResponse(responseData);
+                request = null;
+                responseData = null;
             }
             catch (Exception ex) { ConsoleLogger.WriteLine("Problem Fetching Calendar Info 2: " + ex); }
         }

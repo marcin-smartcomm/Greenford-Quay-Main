@@ -110,6 +110,11 @@ namespace Greenford_Quay_Main
         }
         void YogaDoorControl(bool occupationState) => this.RelayPorts[8].State = !occupationState;
 
+
+        CalendarCheck yogaCalendarCheck;
+        CalendarCheck diningCalendarCheck;
+        CalendarCheck mediaCalendarCheck;
+        CalendarCheck gamesCalendarCheck;
         void InitializeCalendars(string googleApiKey)
         {
             string YogaCalendarID = "gq.block8@gmail.com";
@@ -117,10 +122,10 @@ namespace Greenford_Quay_Main
             string MediaRoomCalendarID = "3f5d207b1e3b5517fefb0a084d9f48594a42f5cd9cf2f862570e3029bc99597d@group.calendar.google.com";
             string GamesRoomCalendarID = "56b0f026f634d28a92ddef07166a7a46c1a644f1e71ada2c8943cd6b2bf7be38@group.calendar.google.com";
 
-            CalendarCheck yogaCalendarCheck = new CalendarCheck(YogaCalendarID, googleApiKey, "Yoga");
-            CalendarCheck diningCalendarCheck = new CalendarCheck(PrivateDiningCalendarID, googleApiKey, "Dining");
-            CalendarCheck mediaCalendarCheck = new CalendarCheck(MediaRoomCalendarID, googleApiKey, "Media");
-            CalendarCheck gamesCalendarCheck = new CalendarCheck(GamesRoomCalendarID, googleApiKey, "Games");
+            yogaCalendarCheck = new CalendarCheck(YogaCalendarID, googleApiKey, "Yoga");
+            diningCalendarCheck = new CalendarCheck(PrivateDiningCalendarID, googleApiKey, "Dining");
+            mediaCalendarCheck = new CalendarCheck(MediaRoomCalendarID, googleApiKey, "Media");
+            gamesCalendarCheck = new CalendarCheck(GamesRoomCalendarID, googleApiKey, "Games");
 
             yogaCalendarCheck.inMeeting += YogaCalendarCheck_inMeeting;
             diningCalendarCheck.inMeeting += DiningCalendarCheck_inMeeting;
