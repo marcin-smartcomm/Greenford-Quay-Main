@@ -3,7 +3,6 @@ using Google.Apis.Services;
 using System;
 using System.Timers;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 
 namespace Greenford_Quay_Main
 {
@@ -22,13 +21,12 @@ namespace Greenford_Quay_Main
             _calendarName = calendarName;
 
             var timer = new Timer();
-            timer.Interval = 65000;
+            timer.Interval = 5000;
             timer.Elapsed += Timer_Elapsed;
             timer.Start();
         }
 
         Task _check;
-        Google.Apis.Calendar.v3.Data.Events responseData = null;
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             if (_check != null) _check.Dispose();
@@ -40,28 +38,34 @@ namespace Greenford_Quay_Main
             });
         }
 
+        CalendarService _service;
+        EventsResource.ListRequest _request;
+        Google.Apis.Calendar.v3.Data.Events _responseData;
         async void GetResponse(string calendarId)
         {
             try
             {
                 DateTime today = DateTime.Today;
-                var service = new CalendarService(new BaseClientService.Initializer()
+                _service = new CalendarService(new BaseClientService.Initializer()
                 {
                     ApiKey = _apiKey,
                     ApplicationName = "Api key example"
                 });
 
-                var request = service.Events.List(calendarId);
-                request.Fields = "items(summary,start,end)";
-                request.OrderBy = EventsResource.ListRequest.OrderByEnum.Updated;
-                request.UpdatedMinDateTimeOffset = today;
-                responseData = await request.ExecuteAsync();
+                _request = _service.Events.List(calendarId);
+                _request.Fields = "items(summary,start,end)";
+                _request.OrderBy = EventsResource.ListRequest.OrderByEnum.Updated;
+                _request.UpdatedMinDateTimeOffset = today;
+                _responseData = await _request.ExecuteAsync();
 
-                ProcessResponse(responseData);
-                request = null;
-                responseData = null;
+                ProcessResponse(_responseData);
+                _service.Dispose();
             }
-            catch (Exception ex) { ConsoleLogger.WriteLine("Problem Fetching Calendar Info 2: " + ex); }
+            catch (Exception ex) 
+            { 
+                ConsoleLogger.WriteLine("Problem Fetching Calendar Info 2: " + ex);
+                _service.Dispose();
+            }
         }
 
         void ProcessResponse(Google.Apis.Calendar.v3.Data.Events response)
