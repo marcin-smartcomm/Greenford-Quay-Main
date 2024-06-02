@@ -55,6 +55,8 @@ namespace Greenford_Quay_Main
                     iPad = new CrestronOne(0x03, this);
                     iPad.ParameterProjectName.Value = "Greenford-Quay-Block8-iPad-GUI";
                     iPad.Register();
+
+                    //var memMonitor = new MemoryMonitor();
                 }
 
                 if (this.SupportsIROut)

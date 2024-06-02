@@ -21,7 +21,7 @@ namespace Greenford_Quay_Main
             _calendarName = calendarName;
 
             var timer = new Timer();
-            timer.Interval = 5000;
+            timer.Interval = 60000;
             timer.Elapsed += Timer_Elapsed;
             timer.Start();
         }
@@ -41,30 +41,31 @@ namespace Greenford_Quay_Main
         CalendarService _service;
         EventsResource.ListRequest _request;
         Google.Apis.Calendar.v3.Data.Events _responseData;
-        async void GetResponse(string calendarId)
+        void GetResponse(string calendarId)
         {
             try
             {
                 DateTime today = DateTime.Today;
-                _service = new CalendarService(new BaseClientService.Initializer()
+
+                using (_service = new CalendarService(new BaseClientService.Initializer()
                 {
                     ApiKey = _apiKey,
                     ApplicationName = "Api key example"
-                });
+                })
+                )
+                {
+                    _request = _service.Events.List(calendarId);
+                    _request.Fields = "items(summary,start,end)";
+                    _request.OrderBy = EventsResource.ListRequest.OrderByEnum.Updated;
+                    _request.UpdatedMinDateTimeOffset = today;
+                    _responseData = _request.Execute();
 
-                _request = _service.Events.List(calendarId);
-                _request.Fields = "items(summary,start,end)";
-                _request.OrderBy = EventsResource.ListRequest.OrderByEnum.Updated;
-                _request.UpdatedMinDateTimeOffset = today;
-                _responseData = await _request.ExecuteAsync();
-
-                ProcessResponse(_responseData);
-                _service.Dispose();
+                    ProcessResponse(_responseData);
+                }
             }
             catch (Exception ex) 
             { 
                 ConsoleLogger.WriteLine("Problem Fetching Calendar Info 2: " + ex);
-                _service.Dispose();
             }
         }
 

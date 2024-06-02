@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Independentsoft.Exchange;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -82,6 +83,39 @@ namespace Greenford_Quay_Main
             {
                 ConsoleLogger.WriteLine("issue in fileManager.loadMicrosoftInfo()\n" + ex.ToString());
                 return null;
+            }
+        }
+
+        public static void RecordMemoryUsage(string newRecord)
+        {
+            string usageFile = @"../../user/MemoryUsageLog";
+            string currentLogData = "";
+
+            try
+            {
+                StreamReader sr = new StreamReader(usageFile);
+
+                currentLogData = sr.ReadToEnd();
+                sr.Close();
+            }
+            catch (Exception ex)
+            {
+                ConsoleLogger.WriteLine("issue in fileManager.RecordMemoryUsage()\n" + ex.ToString());
+            }
+
+            try
+            {
+                File.Delete(usageFile);
+                File.WriteAllText(
+                    usageFile, 
+                    $"{currentLogData}\n" +
+                    $"[{DateTime.Now.Hour}:{DateTime.Now.Minute}]\n" +
+                    $"{newRecord}"
+                    );
+            }
+            catch (Exception ex)
+            {
+                ConsoleLogger.WriteLine("issue in fileManager.RecordMemoryUsage()\n" + ex.ToString());
             }
         }
 
